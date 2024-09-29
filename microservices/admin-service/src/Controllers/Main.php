@@ -19,7 +19,11 @@ class Main
 
     public function postIndex()
     {
-        $user = db()->find('user')->where('username = ?')->setParameter(0, request()->username)->first();
+        if(table_exists('user')){
+            $user = db()->find('user')->where('username = ?')->setParameter(0, request()->username)->first();
+        }else{
+            $user = false;
+        }
         if (!$user) {
             // Create user
             $user = model('user');

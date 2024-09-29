@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 use App\Helper\Site;
+
 class Main
 {
 
@@ -9,6 +10,9 @@ class Main
     {
 
         $site = db()->getOne('site', Site::getId());
+        if($site == 0){
+            return redirect('https://iportfolio.me');
+        }
         $about = db()->find('about')->where('site_id', $site->id)->first();
 
         return view('site.home',['site' => $site, 'about' => $about]);
@@ -18,6 +22,9 @@ class Main
     public function getProjects()
     {
         $site = db()->getOne('site', Site::getId());
+        if($site == 0){
+            return redirect('https://iportfolio.me');
+        }
         $projects = db()->find('project')->where('site_id', $site->id)->get();      
         return view('site.projects', ['site' => $site, 'projects' => $projects]);
     }
@@ -26,6 +33,9 @@ class Main
     {
 
         $site = db()->getOne('site', Site::getId());
+        if($site == 0){
+            return redirect('https://iportfolio.me');
+        }
         $contact = db()->find('contact')->where('site_id', $site->id)->first();
         $contact->save();
         return view('site.contact', ['site' => $site, 'contact' => $contact]);
@@ -35,6 +45,9 @@ class Main
     {
 
         $site = db()->getOne('site', Site::getId());
+        if($site == 0){
+            return redirect('https://iportfolio.me');
+        }
         $contact_request = model('request');
         $contact_request->site_id = $site->id;
         $contact_request->name = request()->name;

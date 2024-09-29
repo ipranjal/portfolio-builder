@@ -14,5 +14,6 @@ class Site{
                 return $site->id;
             }
         }
+         return 0;
     }
 }
