@@ -17,6 +17,7 @@
 
     public static function login($user){
         app()->session()->user = $user->id;
+        app()->session()->username = $user->username;
     }
     
     
