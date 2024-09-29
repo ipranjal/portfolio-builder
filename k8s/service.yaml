@@ -1,0 +1,29 @@
+# Enables the pods in a deployment to be accessible from outside the cluster
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: portfolioadmin-svc
+spec:
+  type: ClusterIP
+  selector:
+    app: portfolioadmin
+  ports:
+    - port: 80
+      targetPort: 80
+      protocol: TCP
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: portfoliowebsite-svc
+spec:
+  type: ClusterIP
+  selector:
+    app: portfoliowebsite
+  ports:
+    - port: 80
+      targetPort: 80
+      protocol: TCP
+

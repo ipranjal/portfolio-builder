@@ -1,0 +1,58 @@
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: portfolioadmin
+  labels:
+    app: portfolioadmin
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: portfolioadmin
+  template:
+    metadata:
+      labels:
+        app: portfolioadmin
+    spec:
+      containers:
+        - name: portfolioadmin
+          image: physcocode/portfolioadmin:latest
+          ports:
+            - containerPort: 80
+          imagePullPolicy: Always
+          resources:
+            # You must specify requests for CPU to autoscale
+            # based on CPU utilization
+            requests:
+              cpu: "250m"
+# ---
+
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: portfoliowebsite
+#   labels:
+#     app: portfoliowebsite
+# spec:
+#   replicas: 1
+#   selector:
+#     matchLabels:
+#       app: portfoliowebsite
+#   template:
+#     metadata:
+#       labels:
+#         app: portfoliowebsite
+#     spec:
+#       containers:
+#         - name: portfoliowebsite
+#           image: physcocode/portfoliowebsite:latest
+#           ports:
+#             - containerPort: 80
+#           imagePullPolicy: Always
+#           resources:
+#             # You must specify requests for CPU to autoscale
+#             # based on CPU utilization
+#             requests:
+#               cpu: "250m"
