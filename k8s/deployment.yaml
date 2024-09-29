@@ -20,7 +20,7 @@ spec:
         - name: portfolioadmin
           image: physcocode/portfolioadmin:latest
           ports:
-            - containerPort: 80
+            - containerPort: 8080
           imagePullPolicy: Always
           resources:
             # You must specify requests for CPU to autoscale
