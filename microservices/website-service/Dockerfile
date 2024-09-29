@@ -42,6 +42,7 @@ RUN --mount=type=bind,source=composer.json,target=composer.json \
 FROM php:8.3.10-apache as final
 COPY ports.conf /etc/apache2/ports.conf
 RUN docker-php-ext-install pdo pdo_mysql
+RUN a2enmod rewrite
 
 # Your PHP application may require additional PHP extensions to be installed
 # manually. For detailed instructions for installing extensions can be found, see
