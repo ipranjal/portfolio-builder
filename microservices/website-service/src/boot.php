@@ -32,7 +32,7 @@ if($app->config()->get('general.env') == 'dev'){
 }
 
 // Register Directories
-$app->registerAutoRoute(__DIR__ . '/controllers', 'App\Controllers');
+$app->registerAutoRoute(__DIR__ . '/Controllers', 'App\Controllers');
 
 $app->template()->registerDir(__DIR__ . '/views',__DIR__ . '/../storage/framework/cache',__DIR__ . '/../assets');
 
