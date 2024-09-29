@@ -40,6 +40,7 @@ RUN --mount=type=bind,source=composer.json,target=composer.json \
 # If reproducability is important, consider using a specific digest SHA, like
 # php@sha256:99cede493dfd88720b610eb8077c8688d3cca50003d76d1d539b0efc8cca72b4.
 FROM php:8.3.10-apache as final
+COPY ports.conf /etc/apache2/ports.conf
 
 # Your PHP application may require additional PHP extensions to be installed
 # manually. For detailed instructions for installing extensions can be found, see
