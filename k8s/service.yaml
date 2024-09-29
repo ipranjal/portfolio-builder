@@ -7,10 +7,10 @@ metadata:
 spec:
   type: ClusterIP
   selector:
-    app: portfolioadmin
+    app: portfolio-admin
   ports:
     - port: 80
-      targetPort: 80
+      targetPort: 8080
       protocol: TCP
 
 ---
@@ -21,9 +21,9 @@ metadata:
 spec:
   type: ClusterIP
   selector:
-    app: portfoliowebsite
+    app: portfolio-website
   ports:
     - port: 80
-      targetPort: 80
+      targetPort: 8080
       protocol: TCP
 

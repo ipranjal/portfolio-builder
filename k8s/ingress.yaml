@@ -22,7 +22,7 @@ spec:
             name: portfolioadmin-svc
             port:
               number: 80
-  - host: *.iportfolio.me
+  - host: "*.iportfolio.me"
     http:
       paths:
       - path: /(.*)

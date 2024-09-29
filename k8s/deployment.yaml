@@ -46,7 +46,7 @@ spec:
         app: portfolio-website
     spec:
       containers:
-        - name: portfoliowebsite
+        - name: portfolio-website
           image: physcocode/portfoliowebsite:v1
           ports:
             - containerPort: 80
