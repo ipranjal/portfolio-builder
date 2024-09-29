@@ -28,11 +28,11 @@ jobs:
         with:
           context: ./microservices/admin-service
           push: true
-          tags: physcocode/portfolioadmin:latest
+          tags: physcocode/portfolioadmin:v1
       -
         name: Build and push website
         uses: docker/build-push-action@v6
         with:
           context: ./microservices/website-service
           push: true
-          tags: physcocode/portfoliowebsite:latest
+          tags: physcocode/portfoliowebsite:v1
