@@ -75,7 +75,7 @@ RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
 COPY --from=deps app/vendor/ /var/www/html/vendor
 # Copy the app files from the app directory.
 COPY . /var/www/html
-
+RUN chmod -R 777 /var/www/html
 # Switch to a non-privileged user (defined in the base image) that the app will run under.
 # See https://docs.docker.com/go/dockerfile-user-best-practices/
 USER www-data
