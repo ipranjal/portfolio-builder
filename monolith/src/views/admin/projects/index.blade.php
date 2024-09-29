@@ -31,28 +31,30 @@
             </tr>
         </thead>
         <tbody>
+            @foreach($projects as $project)
             <tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    Test Post
+                    {{$project->title}}
                 </th>
                 <td class="px-6 py-4">
-                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus ut libero ultricies
+                    {{$project->summary}}
                 </td>
                 <td class="px-6 py-4">
-                    <a href="https://img.freepik.com/free-vector/flat-design-architecture-project-sale-banner-template_23-2149444012.jpg">
-                        <img class="w-20 h-20 mt-2" src="https://img.freepik.com/free-vector/flat-design-architecture-project-sale-banner-template_23-2149444012.jpg" alt="Extra large avatar">
+                    <a href="{{$project->img}}">
+                        <img class="w-20 h-20 mt-2" src="{{$project->img}}" alt="Extra large avatar">
                     </a>
                 </td>
                 <td class="px-6 py-4">
-                    <a href="https://ipranjal.com">https://ipranjal.com</a>
+                    <a href="{{$project->link}}">{{$project->link}}</a>
                  </td>
                 
 
                 <td class="px-6 py-4">
-                    <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                    <a href="#" class="font-medium text-red-600 dark:text-red-500 hover:underline">Delete</a>
+                    <a href="{{url('/admin/projects/edit?id='.$project->id)}}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                    <a href="{{url('/admin/projects/delete?id='.$project->id)}}" class="font-medium text-red-600 dark:text-red-500 hover:underline">Delete</a>
                 </td>
             </tr>
+            @endforeach
 
         </tbody>
     </table>
