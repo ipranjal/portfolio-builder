@@ -1,7 +1,10 @@
 name: ci
 
 on:
-   workflow_dispatch:
+  workflow_dispatch: # Allows manual trigger of the workflow
+  push:             # Trigger the workflow on push events
+    branches:
+      - main 
 
 jobs:
   docker:
