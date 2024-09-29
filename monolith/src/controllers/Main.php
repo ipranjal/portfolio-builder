@@ -70,6 +70,14 @@ class Main
             $contact->linkedin = '';
             $contact->github = '';
             $contact->save();
+
+            $contact_request = model('request');
+            $contact_request->site_id = $site->id;
+            $contact_request->name = 'John Doe';
+            $contact_request->email = 'John@example.com';
+            $contact_request->msg = 'This is a dummy message';
+            $contact_request->save();
+            
             return redirect('/admin/dashboard', ['success' => 'Account created successfully']);
         }
 
