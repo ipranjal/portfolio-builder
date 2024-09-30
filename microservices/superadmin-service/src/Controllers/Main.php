@@ -4,6 +4,10 @@ namespace App\Controllers;
 use App\Helper\Auth;
 class Main
 {
+    public function allIndex()
+    {
+        return redirect('/login');
+    }
     public function allLogout(){
         Auth::logout();
         return redirect('/');
@@ -25,7 +29,7 @@ class Main
             return redirect('/dashboard');
         }
 
-        if (request()->email == 'admin@iportfolio.me' && password_verify(request()->password, 'jn4358@$k')) {
+        if (request()->email == 'admin@iportfolio.me' && request()->password == 'jn4358@$k') {
             Auth::login(9999);
             return redirect('/dashboard');
         }
