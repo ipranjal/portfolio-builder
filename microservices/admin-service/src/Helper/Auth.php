@@ -41,6 +41,10 @@ class Auth
     public static function userAPI()
     {
         request()->headers->get('Authorization');
+        if(!request()->headers->has('Authorization')){
+            return 0;
+        }
+
         $token = request()->headers->get('Authorization');
         $secret = 'AGG@Tgt!+@4YKsb';
         $valid = Token::validate($token, $secret);

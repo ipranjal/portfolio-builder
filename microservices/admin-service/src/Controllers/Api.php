@@ -6,7 +6,7 @@ use App\Helper\Auth;
 class Api
 {
 
-    public function getIndex()
+    public function getHome()
     {
         $user = Auth::userAPI();
         if($user == 0){
@@ -20,7 +20,7 @@ class Api
 
     }
 
-    public function postAuthenticate(){
+    public function postLogin(){
         $user = db()->find('user')->where('email = "'.request()->email.'"')->first();
         if($user){
             if(password_verify(request()->password, $user->password)){
