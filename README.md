@@ -7,8 +7,11 @@ demo - https://portfolio.ipranjal.com
 
 ## Microservice + multitenant
 source - https://github.com/ipranjal/portfolio-builder/tree/main/microservices
+
 admin service (tenant registration + setting) - https://iportfolio.me
+
 demo portfolio = https://demo.iportfolio.me
+
 super admin = https://admin.iportfolio.me
 
 ## Kuberneters
