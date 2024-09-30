@@ -21,10 +21,10 @@ class Api
     }
 
     public function postLogin(){
-        $user = db()->find('user')->where('email = '.request()->email)->first();
+        $user = db()->find('user')->where('email = ?')->setParameter(0, request()->email)->first();
         if($user){
             if(password_verify(request()->password, $user->password)){
-                $token = Auth::loginAPI($user->id);
+                $token = Auth::loginAPI($user);
                 return response()->json(['token' => $token]);
             }
         }

@@ -42,20 +42,10 @@ class Main
         if (!Auth::loggedIn()) {
             return redirect('/login');
         }
-        $site = db()->find('site')->where('user_id = '.Auth::user())->first();
-        return view('admin.dashboard', ['site' => $site]);
-    }
-
-    public function postDashboard()
-    {
-        if (!Auth::loggedIn()) {
-            return redirect('/login');
-        }
         $sites = db()->get('site');
         return view('admin.dashboard', ['sites' => $sites]);
 
     }
 
-  
 
 }
