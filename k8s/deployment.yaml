@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: portfolio-admin
-          image: physcocode/portfolioadmin:v1.12
+          image: physcocode/portfolioadmin:v1.13
           ports:
             - containerPort: 8080
           imagePullPolicy: Always
@@ -47,7 +47,7 @@ spec:
     spec:
       containers:
         - name: portfolio-website
-          image: physcocode/portfoliowebsite:v1.14
+          image: physcocode/portfoliowebsite:v1.15
           ports:
             - containerPort: 80
           imagePullPolicy: Always

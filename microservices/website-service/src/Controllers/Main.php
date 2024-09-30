@@ -14,7 +14,7 @@ class Main
 
         $site = db()->getOne('site', Site::getId());
       
-        $about = db()->find('about')->where('site_id', $site->id)->first();
+        $about = db()->find('about')->where('site_id = '.$site->id)->first();
 
         return view('site.home',['site' => $site, 'about' => $about]);
     }
@@ -26,7 +26,7 @@ class Main
             return redirect('https://iportfolio.me');
         }
         $site = db()->getOne('site', Site::getId());
-        $projects = db()->find('project')->where('site_id', $site->id)->get();      
+        $projects = db()->find('project')->where('site_id = '.$site->id)->get();      
         return view('site.projects', ['site' => $site, 'projects' => $projects]);
     }
 
@@ -38,7 +38,7 @@ class Main
 
         $site = db()->getOne('site', Site::getId());
 
-        $contact = db()->find('contact')->where('site_id', $site->id)->first();
+        $contact = db()->find('contact')->where('site_id = '.$site->id)->first();
         $contact->save();
         return view('site.contact', ['site' => $site, 'contact' => $contact]);
     }

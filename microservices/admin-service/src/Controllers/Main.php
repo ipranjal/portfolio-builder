@@ -113,7 +113,7 @@ class Main
         if (!Auth::loggedIn()) {
             return redirect('/login');
         }
-        $site = db()->find('site')->where('user_id', Auth::user())->first();
+        $site = db()->find('site')->where('user_id = '.Auth::user())->first();
         return view('admin.dashboard', ['site' => $site]);
     }
 
@@ -122,7 +122,7 @@ class Main
         if (!Auth::loggedIn()) {
             return redirect('/login');
         }
-        $site = db()->find('site')->where('user_id', Auth::user())->first();
+        $site = db()->find('site')->where('user_id = '.Auth::user())->first();
 
         $files = storage()->saveRequest();
         if (request()->files->has('avatar')) {
@@ -146,8 +146,8 @@ class Main
         if (!Auth::loggedIn()) {
             return redirect('/admin');
         }
-        $site = db()->find('site')->where('user_id', Auth::user())->first();
-        $about = db()->find('about')->where('site_id', $site->id)->first();
+        $site = db()->find('site')->where('user_id = '.Auth::user())->first();
+        $about = db()->find('about')->where('site_id = '.$site->id)->first();
         return view('admin.about', ['about' => $about]);
     }
 
@@ -156,8 +156,8 @@ class Main
         if (!Auth::loggedIn()) {
             return redirect('/admin');
         }
-        $site = db()->find('site')->where('user_id', Auth::user())->first();
-        $about = db()->find('about')->where('site_id', $site->id)->first();
+        $site = db()->find('site')->where('user_id = '.Auth::user())->first();
+        $about = db()->find('about')->where('site_id = '.$site->id)->first();
         $about->content = request()->about;
         $about->save();
         return redirect('/about', ['success' => 'About information updated successfully']);
@@ -168,9 +168,9 @@ class Main
         if (!Auth::loggedIn()) {
             return redirect('/login');
         }
-        $site = db()->find('site')->where('user_id', Auth::user())->first();
-        $contact = db()->find('contact')->where('site_id', $site->id)->first();
-        $crequests = db()->find('request')->where('site_id', $site->id)->get();
+        $site = db()->find('site')->where('user_id = '.Auth::user())->first();
+        $contact = db()->find('contact')->where('site_id = '.$site->id)->first();
+        $crequests = db()->find('request')->where('site_id = '.$site->id)->get();
         return view('admin.contact', ['contact' => $contact, 'crequests' => $crequests]);
     }
 
@@ -179,8 +179,8 @@ class Main
         if (!Auth::loggedIn()) {
             return redirect('/login');
         }
-        $site = db()->find('site')->where('user_id', Auth::user())->first();
-        $contact = db()->find('contact')->where('site_id', $site->id)->first();
+        $site = db()->find('site')->where('user_id = '.Auth::user())->first();
+        $contact = db()->find('contact')->where('site_id ='.$site->id)->first();
         $contact->email = request()->get('email', '');
         $contact->facebook = request()->get('facebook', '');
         $contact->twitter = request()->get('twitter', '');
@@ -198,24 +198,24 @@ class Main
             return view('admin.projects.add');
         }
         if ($type == 'edit') {
-            $project = db()->find('project')->where('id', request()->id)->first();
+            $project = db()->find('project')->where('id = '.request()->id)->first();
             return view('admin.projects.edit', ['project' => $project]);
         }
         if ($type == 'delete') {
-            $project = db()->find('project')->where('id', request()->id)->first();
+            $project = db()->find('project')->where('id ='.request()->id)->first();
             $project->delete();
             return redirect('/projects/view', ['success' => 'Project deleted successfully']);
         }
 
-        $site = db()->find('site')->where('user_id', Auth::user())->first();
-        $projects = db()->find('project')->where('site_id', $site->id)->get();
+        $site = db()->find('site')->where('user_id = '.Auth::user())->first();
+        $projects = db()->find('project')->where('site_id = '.$site->id)->get();
         return view('admin.projects.index', ['projects' => $projects]);
     }
 
     public function postProjects()
     {
         if (request()->has('id')) {
-            $project = db()->find('project')->where('id', request()->id)->first();
+            $project = db()->find('project')->where('id = '. request()->id)->first();
             if (request()->files->has('img')) {
                 $files = storage()->saveRequest();
                 if (isset($files['img'])) {
@@ -228,7 +228,7 @@ class Main
             $project->save();
             return redirect('/projects/view', ['success' => 'Project updated successfully']);
         }
-        $site = db()->find('site')->where('user_id', Auth::user())->first();
+        $site = db()->find('site')->where('user_id ='. Auth::user())->first();
         $project = model('project');
         $project->site_id = $site->id;
         $files = storage()->saveRequest();
