@@ -45,4 +45,4 @@ jobs:
         with:
           context: ./microservices/superadmin-service
           push: true
-          tags: physcocode/portfoliosuper:v1.3
+          tags: physcocode/portfoliosuper:v1.4

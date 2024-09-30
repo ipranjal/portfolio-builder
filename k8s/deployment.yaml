@@ -77,7 +77,7 @@ spec:
     spec:
       containers:
         - name: portfolio-superadmin
-          image: physcocode/portfoliosuper:v1.3
+          image: physcocode/portfoliosuper:v1.4
           ports:
             - containerPort: 80
           imagePullPolicy: Always
