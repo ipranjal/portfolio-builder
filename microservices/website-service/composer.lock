@@ -1545,16 +1545,16 @@
         },
         {
             "name": "scrawler/arca",
-            "version": "v3.1.0",
+            "version": "v3.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/scrawler-labs/arca-orm.git",
-                "reference": "81f21534fc36c632c4d87003ef9086978d7fcd3c"
+                "reference": "f64018f815b895f3e51765dc1a5568a1d33dad51"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/scrawler-labs/arca-orm/zipball/81f21534fc36c632c4d87003ef9086978d7fcd3c",
-                "reference": "81f21534fc36c632c4d87003ef9086978d7fcd3c",
+                "url": "https://api.github.com/repos/scrawler-labs/arca-orm/zipball/f64018f815b895f3e51765dc1a5568a1d33dad51",
+                "reference": "f64018f815b895f3e51765dc1a5568a1d33dad51",
                 "shasum": ""
             },
             "require": {
@@ -1593,9 +1593,9 @@
             "description": "Arca ORM by Scrawler",
             "support": {
                 "issues": "https://github.com/scrawler-labs/arca-orm/issues",
-                "source": "https://github.com/scrawler-labs/arca-orm/tree/v3.1.0"
+                "source": "https://github.com/scrawler-labs/arca-orm/tree/v3.1.1"
             },
-            "time": "2024-09-27T21:01:03+00:00"
+            "time": "2024-09-30T04:46:07+00:00"
         },
         {
             "name": "scrawler/blade",
