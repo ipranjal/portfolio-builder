@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: portfolio-admin
-          image: physcocode/portfolioadmin:v1.15
+          image: physcocode/portfolioadmin:v1.16
           ports:
             - containerPort: 8080
           imagePullPolicy: Always
@@ -47,7 +47,37 @@ spec:
     spec:
       containers:
         - name: portfolio-website
-          image: physcocode/portfoliowebsite:v1.15
+          image: physcocode/portfoliowebsite:v1.16
+          ports:
+            - containerPort: 80
+          imagePullPolicy: Always
+          resources:
+            # You must specify requests for CPU to autoscale
+            # based on CPU utilization
+            requests:
+              cpu: "250m"
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: portfolio-superadmin
+  labels:
+    app: portfolio-superadmin
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: portfolio-superadmin
+  template:
+    metadata:
+      labels:
+        app: portfolio-superadmin
+    spec:
+      containers:
+        - name: portfolio-superadmin
+          image: physcocode/portfoliosuper:v1.0
           ports:
             - containerPort: 80
           imagePullPolicy: Always

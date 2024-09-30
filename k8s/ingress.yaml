@@ -22,6 +22,16 @@ spec:
             name: portfolioadmin-svc
             port:
               number: 80
+  - host: admin.iportfolio.me
+    http:
+      paths:
+      - path: /(.*)
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: portfoliosuper-svc
+            port:
+              number: 80
   - host: "*.iportfolio.me"
     http:
       paths:

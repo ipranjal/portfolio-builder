@@ -20,7 +20,7 @@ class Api
 
     }
 
-    public function postLogin(){
+    public function allLogin(){
         $user = db()->find('user')->where('email = "'.request()->email.'"')->first();
         if($user){
             if(password_verify(request()->password, $user->password)){
