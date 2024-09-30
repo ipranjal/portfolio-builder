@@ -47,7 +47,7 @@ spec:
     spec:
       containers:
         - name: portfolio-website
-          image: physcocode/portfoliowebsite:v1.11
+          image: physcocode/portfoliowebsite:v1.12
           ports:
             - containerPort: 80
           imagePullPolicy: Always
