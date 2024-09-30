@@ -47,5 +47,26 @@ class Main
 
     }
 
+    public function getDelete(){
+        if (!Auth::loggedIn()) {
+            return redirect('/login');
+        }
+        $site = db()->find('site')->where('id = '.request()->id)->first();
+        $site->delete();
+        $about = db()->find('about')->where('site_id = '.request()->id)->first();
+        $about->delete();
+        $projects = db()->find('project')->where('site_id = '.request()->id)->get();
+        foreach($projects as $project){
+            $project->delete();
+        }
+        $contact = db()->find('contact')->where('site_id = '.request()->id)->first();
+        $contact->delete();
+        $requets = db()->find('request')->where('site_id = '.request()->id)->get();
+        foreach($requets as $request){
+            $request->delete();
+        }
+        return redirect('/dashboard');
+    }
+
 
 }
